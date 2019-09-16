@@ -2,7 +2,7 @@
 
 ## Roles
 
-### Administrator
+### Commissioner
 
 ### Comptroller
 
@@ -11,6 +11,8 @@
 ## Concepts
 
 ### Election
+
+### Candidate
 
 ### Ballot
 
