@@ -1,0 +1,9 @@
+[submodule "Components/frontend"]
+	path = Components/frontend
+	url = git@github.com:Unicus-International/voting-booth-frontend
+[submodule "Components/frontend-tests"]
+	path = Components/frontend-tests
+	url = git@github.com:Unicus-International/voting-booth-frontend-tests
+[submodule "Components/backend"]
+	path = Components/backend
+	url = git@github.com:Unicus-International/voting-booth-backend
