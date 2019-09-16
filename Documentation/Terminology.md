@@ -2,6 +2,8 @@
 
 ## Roles
 
+### User
+
 ### Commissioner
 
 ### Comptroller
@@ -10,9 +12,13 @@
 
 ## Concepts
 
+### Electoral roll
+
 ### Election
 
 ### Candidate
+
+### Ticket
 
 ### Ballot
 
