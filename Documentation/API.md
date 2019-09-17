@@ -1,6 +1,6 @@
 # Voting Booth API
 
-## User Management
+## User life cycle management
 
 ### Registration
 
