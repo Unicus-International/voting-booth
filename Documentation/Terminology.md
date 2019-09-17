@@ -32,6 +32,10 @@ An election is a question on which an electorate (i.e. a collection of electors)
 ```
 election: (
   identifier: <election>,
+
+  name: string,
+  question: string,
+
   ballots: [ <ballot> ],
   candidates: [ <candidate> ],
   franchises: [ <franchise> ],
