@@ -7,3 +7,6 @@
 [submodule "Components/backend"]
 	path = Components/backend
 	url = git@github.com:Unicus-International/voting-booth-backend
+[submodule "Components/frontend-java"]
+	path = Components/frontend-java
+	url = git@github.com:Unicus-International/voting-booth-frontend-java
