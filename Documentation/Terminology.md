@@ -1,16 +1,18 @@
 # Terminology used in Voting Booth
 
-## Roles
+## Concepts
 
 ### User
 
-### Commissioner
+A user is a person within the user system, with an email address as their user ID. Users may also have a display name set, and if they registered themselves (see [Comptroller](#comptroller) below) they will also have a password set.
 
-### Comptroller
-
-### Elector
-
-## Concepts
+```
+user: (
+  email: <email>,
+  name: string?,
+  password: password?,
+)
+```
 
 ### Electoral roll
 
@@ -91,3 +93,11 @@ vote: (
   candidates: [ <candidate> ],
 )
 ```
+
+## Roles
+
+### Commissioner
+
+### Comptroller
+
+### Elector
