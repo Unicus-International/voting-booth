@@ -27,7 +27,7 @@ electoralRoll: [ (
 
 ### Election
 
-An election is a question on which an electorate (i.e. a collection of electors) vote, a collection of one or more ballots and their associated candidates, and the associated process control measures such as start and end dates, the franchies to be exercised, the choice vote counting system, &c.. Each election happens at most once, and once completed cannot be reopened. The result of an election might be a single selected candidate, or a collection of selected candidates, orderered or unordered.
+An election is a question on which an electorate (i.e. a collection of electors) vote, a collection of one or more ballots and their associated candidates, and the associated process control measures such as start and end dates, the franchises to be exercised, the choice vote counting system, &c.. Each election happens at most once, and once completed cannot be reopened. The result of an election might be a single selected candidate, or a collection of selected candidates, ordered or unordered.
 
 ```
 election: (
@@ -40,9 +40,8 @@ election: (
   system: <system>,
   votes: [ <vote> ],
 
-  commissioner: <commissioner>,
-  comptrollers: [ <comptroller> ],
-  electors: [ <elector> ],
+  commissioner: <user>,
+  comptrollers: [ <user> ],
 )
 ```
 
@@ -96,8 +95,16 @@ vote: (
 
 ## Roles
 
+Roles are representative of tasks users or guests can fulfill. A user may fulfill any number of roles at any given time, with regards to different elections.
+
 ### Commissioner
+
+A commissioner is a user who has opened and configured (commissioned) an election. Commissioners are also comptrollers with regards to any elections they have commissioned.
 
 ### Comptroller
 
+A comptroller is a user who has been selected to help oversee an election. They do not need to be registered to do so, but if they are not registered, shadow accounts are created for them for organizational purposes. If they later register as full users, these accounts are fully joined.
+
 ### Elector
+
+An elector is a guest who is enfranchised to vote in a particular election. Electors are identified only by their franchise identifier, in order to preserve anonymity. Commissioners and comptrollers are often, but not by necessity, electors.
