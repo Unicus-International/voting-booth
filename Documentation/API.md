@@ -88,6 +88,7 @@ reply body:
       "question": string,
       "runs": { "from": date, "to": date },
       "system": <system>,
+      "updatableVotes": boolean,
       "ballots": [
         {
           "name": string,
@@ -180,6 +181,7 @@ reply body:
       "question": string,
       "runs": { "from": date, "to": date },
       "system": <system>,
+      "updatableVotes": boolean,
       "ballots": [
         {
           "name": string,
@@ -227,6 +229,7 @@ request body:
   application/json: {
     "name": string,
     "question": string,
+    "updatableVotes": boolean,
     "runs": {
       "from": date,
       "to": date

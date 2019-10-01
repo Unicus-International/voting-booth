@@ -42,6 +42,7 @@ election: (
 
   runs: ( from: date, to: date ),
   system: <system>,
+  updatableVotes: boolean,
   votes: [ <vote> ],
 
   commissioner: <user>,
