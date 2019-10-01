@@ -152,7 +152,7 @@ reply body:
   200: application/json: [
     {
       "identifier": <election>,
-      "name": election name
+      "name": string
     }
   ]
   403: none
