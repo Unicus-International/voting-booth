@@ -129,3 +129,202 @@ reply body:
   none except:
     403: application/json: { "error": <reason> }
 ```
+
+## Election comissioning
+
+All calls to the APIs outlined below require the header `X-Session-Id` to be set, containing a valid session ID.
+
+### Listing comissioned elections
+
+When called with a valid session ID, the response will contain a JSON list of objects, each containing an election identifier and the name of the corresponding election.
+
+```
+GET /elections
+
+request headers:
+  X-Session-Id: Session ID
+
+reply status:
+  200: Request processed
+  403: Not logged in
+
+reply body:
+  200: application/json: [
+    {
+      "identifier": <election>,
+      "name": election name
+    }
+  ]
+  403: none
+```
+
+### Getting the details of an election
+
+When called with a valid session ID, the response will contain a JSON object, containing a description of the selected election, as is available to a commissioner or comptroller.
+
+```
+GET /elections/<election>
+
+request headers:
+  X-Session-Id: Session ID
+
+reply status:
+  200: Request processed
+  403: Not logged in
+  404: Nonexistent election
+
+reply body:
+  none except:
+    200: application/json: {
+      "name": string,
+      "question": string,
+      "runs": { "from": date, "to": date },
+      "system": <system>,
+      "ballots": [
+        {
+          "name": string,
+          "identifier": <ballot>,
+          "candidates": [
+            {
+              "identifier": <candidate>,
+              "name": string
+            }
+          ]
+        }
+      ]
+    }
+```
+
+### Listing electoral systems
+
+When called, returns a list of available electoral systems (methods for gathering and counting votes).
+
+```
+GET /elections/systems
+
+reply status:
+  200: Request processed
+
+reply body:
+  200: application/json: [
+    {
+      "identifier": <system>,
+      "name": string,
+      "description": string
+    }
+  ]
+```
+
+### Commissioning a new election
+
+```
+POST /elections
+
+request headers:
+  X-Session-Id: Session ID
+
+request body:
+  application/json: {
+    "name": string,
+    "question": string,
+    "runs": {
+      "from": date,
+      "to": date
+    },
+    "system": <system>
+  }
+
+reply status:
+  201: Election created
+  403: Not logged in
+
+reply body:
+  none except:
+    201: as GET /elections/<election>
+```
+
+### Listing election ballots
+
+When called with a valid session ID, will list the ballots in an election.
+
+```
+GET /elections/<election>/ballots
+
+request headers:
+  X-Session-Id: Session ID
+
+reply status:
+  200: Request processed
+  403: Not logged in
+  404: Nonexistent election
+
+reply body:
+  none except:
+    200: application/json: [
+      {
+        "name": string,
+        "identifier": <ballot>,
+        "candidates": [
+          {
+            "identifier": <candidate>,
+            "name": string
+          }
+        ]
+      }
+    ]
+```
+
+### Listing a specific ballot
+
+```
+GET /elections/<election>/ballots/<ballot>
+
+request headers:
+  X-Session-Id: Session ID
+
+reply status:
+  200: Request processed
+  403: Not logged in
+  404: Nonexistent election or nonexistent ballot
+
+reply body:
+  none except:
+    200: application/json: {
+      "name": string,
+      "identifier": <ballot>,
+      "candidates": [
+        {
+          "identifier": <candidate>,
+          "name": string
+        }
+      ]
+    }
+```
+
+### Creating a new ballot
+
+```
+POST /elections/<election>/ballots
+
+request headers:
+  X-Session-Id: Session ID
+
+request body:
+  application/json: {
+    "name": string,
+    "candidates": [
+      {
+        "name": string
+      }
+    ]
+  }
+
+reply status:
+  201: Ballot created
+  403: Not logged in
+  404: Nonexistent election
+
+reply body:
+  none except:
+    201: as GET /elections/<election>/ballots/<ballot>
+```
