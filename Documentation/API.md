@@ -67,7 +67,7 @@ Vote accepts no parameters, except the in-URL franchise ID parameter. Voting als
 
 ### Fetching vote information
 
-The reply body must contain a JSON object that contains a field `election`, containing the fields `name`, a string; `question`, a string; `runs`, a JSON object containing `from` and `to`, both dates (ISO8601-encoded strings); and `system`, string containing an identifier for the system in use, as well as a field `ballots` which contains a list of ballots, each a JSON object with a field `name` containing a string, a field `identifier` containing an identifier, and a field `candidates` containing a list of candidate JSON objects. Each candidate JSON object contains a field `identifier`, and a field `name`.
+The reply body must contain a JSON object that contains a field `election`, containing the fields `name`, a string; `question`, a string; `runs`, a JSON list containing a start and and end date, both ISO8601-encoded strings; and `system`, string containing an identifier for the system in use, as well as a field `ballots` which contains a list of ballots, each a JSON object with a field `name` containing a string, a field `identifier` containing an identifier, and a field `candidates` containing a list of candidate JSON objects. Each candidate JSON object contains a field `identifier`, and a field `name`.
 
 The reply JSON object may also contain a field `vote`, containing a JSON object with vote information, as described in [Submitting vote information](#submitting-vote-information).
 
@@ -86,7 +86,7 @@ reply body:
     "election": {
       "name": string,
       "question": string,
-      "runs": { "from": date, "to": date },
+      "runs": [ date, date ],
       "system": <system>,
       "updatableVotes": boolean,
       "ballots": [
@@ -179,7 +179,7 @@ reply body:
     200: application/json: {
       "name": string,
       "question": string,
-      "runs": { "from": date, "to": date },
+      "runs": [ date, date ],
       "system": <system>,
       "updatableVotes": boolean,
       "ballots": [
@@ -230,10 +230,7 @@ request body:
     "name": string,
     "question": string,
     "updatableVotes": boolean,
-    "runs": {
-      "from": date,
-      "to": date
-    },
+    "runs": [ date, date ],
     "system": <system>
   }
 
