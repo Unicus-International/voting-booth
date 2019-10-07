@@ -140,7 +140,7 @@ All calls to the APIs outlined below require the header `X-Session-Id` to be set
 When called with a valid session ID, the response will contain a JSON list of objects, each containing an election identifier and the name of the corresponding election.
 
 ```
-GET /elections
+GET /elections/list
 
 request headers:
   X-Session-Id: Session ID
@@ -164,7 +164,7 @@ reply body:
 When called with a valid session ID, the response will contain a JSON object, containing a description of the selected election, as is available to a commissioner or comptroller.
 
 ```
-GET /elections/<election>
+GET /elections/<election>/list
 
 request headers:
   X-Session-Id: Session ID
@@ -202,7 +202,7 @@ reply body:
 When called, returns a list of available electoral systems (methods for gathering and counting votes).
 
 ```
-GET /elections/systems
+GET /elections/systems/list
 
 reply status:
   200: Request processed
@@ -220,7 +220,7 @@ reply body:
 ### Commissioning a new election
 
 ```
-POST /elections
+POST /elections/commission
 
 request headers:
   X-Session-Id: Session ID
@@ -240,7 +240,7 @@ reply status:
 
 reply body:
   none except:
-    201: as GET /elections/<election>
+    201: as GET /elections/<election>/list
 ```
 
 ### Listing election ballots
@@ -248,7 +248,7 @@ reply body:
 When called with a valid session ID, will list the ballots in an election.
 
 ```
-GET /elections/<election>/ballots
+GET /elections/<election>/ballots/list
 
 request headers:
   X-Session-Id: Session ID
@@ -277,7 +277,7 @@ reply body:
 ### Listing a specific ballot
 
 ```
-GET /elections/<election>/ballots/<ballot>
+GET /elections/<election>/ballots/<ballot>/list
 
 request headers:
   X-Session-Id: Session ID
@@ -304,7 +304,7 @@ reply body:
 ### Creating a new ballot
 
 ```
-POST /elections/<election>/ballots
+POST /elections/<election>/ballots/new
 
 request headers:
   X-Session-Id: Session ID
