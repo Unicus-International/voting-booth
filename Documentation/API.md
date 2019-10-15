@@ -317,6 +317,7 @@ reply status:
   201: Ballot created
   403: Not logged in
   404: Nonexistent election
+  409: The election has been opened
 
 reply body:
   none except:
