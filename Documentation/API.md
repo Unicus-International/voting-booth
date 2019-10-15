@@ -263,13 +263,7 @@ reply body:
     200: application/json: [
       {
         "name": string,
-        "identifier": <ballot>,
-        "candidates": [
-          {
-            "identifier": <candidate>,
-            "name": string
-          }
-        ]
+        "identifier": <ballot>
       }
     ]
 ```
